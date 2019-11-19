@@ -15,7 +15,7 @@ awk '$6~/adar/' internal_modification_count_table > adar.modification_count_tabl
 
 
 ###############################################
-# IDENTIFICATION OF EDITING SITES PER SAMPLES #
+# IDENTIFICATION OF EDITING SITES PER SAMPLE #
 ###############################################
 
 for indiv in `cut -f3 data_info.csv -d"," | grep -v Sample`; do
