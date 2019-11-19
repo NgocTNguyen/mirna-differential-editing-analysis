@@ -11,3 +11,5 @@ This folder contains the following files:
 This file can be generated from the Chimira webserver (https://www.ebi.ac.uk/research/enright/software/chimira) after submitting all the relevant sequencing data files.
 
 3. miRNA_editing_pipeline.sh is a master bash script to process the raw count data table (i.e. subtotal_combined_count_table) and call all relevant Python (sumup_modification_counts.py) and R (identify_editing_sites.R, identify_differentially_edited_sites.R, decide_differentially_edited_sites.R) scripts to process the data and run all relevant statistical tests.
+
+In order to run the pipeline, open a Unix/Linux terminal, go to this folder and type ./miRNA_editing_pipeline.sh
