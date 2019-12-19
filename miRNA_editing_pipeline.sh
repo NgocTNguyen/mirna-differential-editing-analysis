@@ -8,7 +8,7 @@ awk '$6!~/snp/ && $7!~/-/' subtotal_combined_count_table | sort -u > internal_mo
 cut -f1,11,12,13 internal_modification_count_table | sort -u > mirna_count_per_sample
 
 for base in A U C G; do
-	awk -v nucleotide="$base" '$6~/-/ && $7~nucleotide' internal_modification_count_table > $mod.modification_count_table # separate internal modifications into each type (A, U, C, G and adar)
+	awk -v nucleotide="$base" '$6~/-/ && $7~nucleotide' internal_modification_count_table > $base.modification_count_table # separate internal modifications into each type (A, U, C, G and adar)
 done
 
 awk '$6~/adar/' internal_modification_count_table > adar.modification_count_table
@@ -21,7 +21,7 @@ awk '$6~/adar/' internal_modification_count_table > adar.modification_count_tabl
 for indiv in `cut -f3 data_info.csv -d"," | grep -v Sample`; do
 	for base in A U C G adar; do
 		echo $indiv $base
-		./sumup_modification_counts.py $indiv $base # sum up all counts for each modification position of each miRNA
+		./sumup_modification_count.py $indiv $base # sum up all counts for each modification position of each miRNA
 		./identify_editing_sites.R $indiv $base # identify editing sites for each sample using accumulative binomial distribution
 
 	done
